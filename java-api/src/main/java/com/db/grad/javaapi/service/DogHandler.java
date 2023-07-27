@@ -1,20 +1,54 @@
 package com.db.grad.javaapi.service;
 
-import com.db.grad.javaapi.model.Dog;
+
 import com.db.grad.javaapi.repository.DogsRepository;
+import com.db.grad.javaapi.model.*;
+
+import java.util.List;
 
 public class DogHandler {
-
-    private DogsRepository itsDogsRepo;
-    public DogHandler(DogsRepository repo) {
-        itsDogsRepo = repo;
+    private DogsRepository itsDogRepo;
+    public DogHandler(DogsRepository itsDogRepo) {
+        this.itsDogRepo = itsDogRepo;
     }
 
     public long addDog(Dog theDog) {
-        return itsDogsRepo.save(theDog);
+        return itsDogRepo.save(theDog);
     }
 
     public long getNoOfDogs() {
-        return itsDogsRepo.count();
+        return itsDogRepo.count();
+    }
+
+    public Dog getDogByName(String name)
+    {
+        Dog sampleDog = new Dog();
+        sampleDog.setName(name);
+        List<Dog> results = itsDogRepo.findByName(sampleDog);
+        if (results.size()==1)
+        {
+            return results.get(0);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public Dog getDogByid(long theDogid) {
+        return itsDogRepo.findById(theDogid);
+    }
+
+    public long updateDogDetails(Dog theDog) {
+        if (!itsDogRepo.existsById(theDog.getId())){
+            return -1;
+        }
+        else {
+            return itsDogRepo.save(theDog);
+        }
+    }
+
+    public boolean removeDog(Dog dog) {
+        return itsDogRepo.delete(dog);
     }
 }
