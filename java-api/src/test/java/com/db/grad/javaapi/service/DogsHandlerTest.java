@@ -247,7 +247,7 @@ public class DogsHandlerTest {
 
         // Assert
         assertTrue("Check if Dog is not removed", !removed);
-
+    }
     public void makeSureRepoIsEmpty(){
         itsDogRepo.deleteAll();
     }
@@ -266,6 +266,5 @@ public class DogsHandlerTest {
 
         //assert
         assertEquals(expectedResult, actualResult);
-
     }
 }
