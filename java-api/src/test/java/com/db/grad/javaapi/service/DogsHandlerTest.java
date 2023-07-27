@@ -171,7 +171,7 @@ public class DogsHandlerTest {
     }
 
     @Test
-    @DisplayName("10. Update Dog Details (!Exists)")
+    @DisplayName("9. Update Dog Details (!Exists)")
     public void update_dog_details_not_exists()
     {
         // Arrange
@@ -180,30 +180,63 @@ public class DogsHandlerTest {
         // Act
         Dog theDog = new Dog();
         long theDogid = cut.addDog(theDog);
-        theDog.setName("Carly");
-        theDog.setId(theDogid+1);
-        long changedid = cut.updateDogDetails(theDog);
+        Dog otherDog = new Dog();
+        otherDog.setId(theDogid+1);
+        long changedid = cut.updateDogDetails(otherDog);
         int expectedResult = -1;
 
         // Assert
         assertEquals(expectedResult, changedid);
     }
 
-//    @Test
-//    @DisplayName("11. Update Dog Details (Exists)")
-//    public void update_dog_details_exists()
-//    {
-//        // Arrange
-//        DogHandler cut = new DogHandler(itsDogRepo);
-//
-//        // Act
-//        Dog theDog = new Dog();
-//        long theDogid = cut.addDog(theDog);
-//        theDog.setName("Carly");
-//        theDog.setId(theDogid);
-//        long changedid = cut.updateDogDetails(theDog);
-//
-//        // Assert
-//        assertEquals(theDogid, changedid);
-//    }
+    @Test
+    @DisplayName("10. Update Dog Details (Exists)")
+    public void update_dog_details_exists()
+    {
+        // Arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        // Act
+        Dog theDog = new Dog();
+        long theDogid = cut.addDog(theDog);
+        theDog.setName("Carly");
+        theDog.setId(theDogid);
+        long changedid = cut.updateDogDetails(theDog);
+
+        // Assert
+        assertEquals(theDogid, changedid);
+    }
+
+    @Test
+    @DisplayName("11. Remove Dog (Exists)")
+    public void remove_dog_exists()
+    {
+        // Arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        // Act
+        Dog theDog = new Dog();
+        long id = cut.addDog(theDog);
+        boolean removed = cut.removeDog(theDog);
+
+        // Assert
+        assertTrue("Check if Dog is removed", removed);
+    }
+
+    @Test
+    @DisplayName("12. Remove Dog (Doesn't Exists)")
+    public void remove_dog_not_exists()
+    {
+        // Arrange
+        DogHandler cut = new DogHandler(itsDogRepo);
+
+        // Act
+        Dog theDog = new Dog();
+        long id = cut.addDog(theDog);
+        cut.removeDog(theDog);
+        boolean removed = cut.removeDog(theDog);
+
+        // Assert
+        assertTrue("Check if Dog is not removed", !removed);
+    }
 }

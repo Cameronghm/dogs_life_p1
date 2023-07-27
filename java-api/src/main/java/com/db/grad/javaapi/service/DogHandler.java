@@ -39,14 +39,15 @@ public class DogHandler {
     }
 
     public long updateDogDetails(Dog theDog) {
-        System.out.println(theDog.getId());
-        System.out.println(itsDogRepo.existsById(1));
-        System.out.println(itsDogRepo.existsById(2));
         if (!itsDogRepo.existsById(theDog.getId())){
             return -1;
         }
         else {
             return itsDogRepo.save(theDog);
         }
+    }
+
+    public boolean removeDog(Dog dog) {
+        return itsDogRepo.delete(dog);
     }
 }
