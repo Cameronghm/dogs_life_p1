@@ -18,4 +18,10 @@ public interface DogRepository extends JpaRepository<Dog, Long> {
 
     @Query(nativeQuery = true, value = "select * from dogs where id = dogId")
     Dog findDogBySpecificId(String dogId);
+
+    @Query(nativeQuery = true, value = "update dogs set name = dogName where id = dogId")
+    Dog modifyDogNameById(String dogName, long dogId);
+
+    /*@Query(nativeQuery = true, value = "delete from dogs where id = dogId")
+    boolean */
 }
