@@ -12,21 +12,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 
 @SpringBootApplication
-public class SuperheroesApplication implements CommandLineRunner {
+public class SuperheroesApplication /*implements CommandLineRunner */ {
 
     //@Autowired
     //Calculator calc;
 //    @Autowired
 //    HeroRepository heroRepository;
 
-    @Autowired
-    HeroService heroService;
+    /*@Autowired
+    HeroService heroService;*/
 
     public static void main(String[] args) {
         SpringApplication.run(SuperheroesApplication.class, args);
     }
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
         //System.out.println("Hello World!");
         //int result = calc.addition(3, 4);
@@ -57,5 +57,5 @@ public class SuperheroesApplication implements CommandLineRunner {
         for (Hero hero : lastThreeHeroes){
             System.out.println(hero);
         }
-    }
+    }*/
 }
