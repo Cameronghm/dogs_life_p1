@@ -2,12 +2,14 @@ package com.example.superheroes;
 
 
 import com.example.superheroes.model.Hero;
+import com.example.superheroes.service.HeroService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.superheroes.practice.Calculator;
 import com.example.superheroes.repository.HeroRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +23,9 @@ public class SuperheroesApplication implements CommandLineRunner {
 
 	@Autowired
 	HeroRepository heroRepository;
+
+	@Autowired
+	HeroService heroService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SuperheroesApplication.class, args);
@@ -44,6 +49,11 @@ public class SuperheroesApplication implements CommandLineRunner {
 		}
 		System.out.println(" ");
 		for (Hero hero : heroes2) {
+			System.out.println(hero);
+		}
+		System.out.println(" ");
+		List<Hero> heroes3 = heroService.getHeroesStartingWithLetter("C");
+		for (Hero hero : heroes3){
 			System.out.println(hero);
 		}
 	}
