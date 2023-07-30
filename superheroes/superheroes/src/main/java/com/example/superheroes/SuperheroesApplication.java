@@ -16,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @SpringBootApplication
-public class SuperheroesApplication implements CommandLineRunner {
-
+public class SuperheroesApplication //implements CommandLineRunner
+{
 	@Autowired
 	Calculator calc;
 
@@ -31,30 +31,32 @@ public class SuperheroesApplication implements CommandLineRunner {
 		SpringApplication.run(SuperheroesApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Hello World");
-		int result = calc.addition(3, 4);
-		System.out.println(result);
-
-		List<Hero> heroes = heroRepository.findAll();
-		List<Hero> heroes1 = heroRepository.findTop3ByOrderByNameDesc();
-		List<Hero> heroes2 = heroRepository.findHeroesNameStartingWithLetter("C%");
-		for (Hero hero : heroes) {
-			System.out.println(hero);
-		}
-		System.out.println(" ");
-		for (Hero hero : heroes1) {
-			System.out.println(hero);
-		}
-		System.out.println(" ");
-		for (Hero hero : heroes2) {
-			System.out.println(hero);
-		}
-		System.out.println(" ");
-		List<Hero> heroes3 = heroService.getHeroesStartingWithLetter("C");
-		for (Hero hero : heroes3){
-			System.out.println(hero);
-		}
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		SpringApplication.run(SuperheroesApplication.class, args);
+//
+//		System.out.println("Hello World");
+//		int result = calc.addition(3, 4);
+//		System.out.println(result);
+//
+//		List<Hero> heroes = heroRepository.findAll();
+//		List<Hero> heroes1 = heroRepository.findTop3ByOrderByNameDesc();
+//		List<Hero> heroes2 = heroRepository.findHeroesNameStartingWithLetter("C%");
+//		for (Hero hero : heroes) {
+//			System.out.println(hero);
+//		}
+//		System.out.println(" ");
+//		for (Hero hero : heroes1) {
+//			System.out.println(hero);
+//		}
+//		System.out.println(" ");
+//		for (Hero hero : heroes2) {
+//			System.out.println(hero);
+//		}
+//		System.out.println(" ");
+//		List<Hero> heroes3 = heroService.getHeroesStartingWithLetter("C");
+//		for (Hero hero : heroes3){
+//			System.out.println(hero);
+//		}
+//	}
 }
