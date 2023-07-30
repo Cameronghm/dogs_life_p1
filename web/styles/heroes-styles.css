@@ -1,0 +1,23 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+table{
+    border: 1px solid black;
+}
+
+  td, th{
+    border: 1px solid black;
+}
+
+th{
+    color: #A7A2CE;
+}
+
+#special-header{
+    color: #CEA7A1;
+}
+
+.changed-style{
+    font-style:italic ;
+}
