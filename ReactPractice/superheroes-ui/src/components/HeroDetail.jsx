@@ -19,8 +19,8 @@ const HeroDetail = (props) => {
       <Card.Title>Alias: {props.info.alias}</Card.Title>
       <Card.Text>Name: {props.info.name}</Card.Text>
       <Row>
-        <Col><Card.Text>Likes: {counter}</Card.Text></Col>
-        <Col><Button variant="primary" onClick={incrementCounter}>Like</Button></Col>
+      <Col xs={6}><Button variant="primary" onClick={incrementCounter}>Like</Button></Col>
+      <Col xs={6}>{counter > 0  && <Card.Text >Likes: {counter}</Card.Text > }</Col>
       </Row>
     </Card.Body>
   </Card>
