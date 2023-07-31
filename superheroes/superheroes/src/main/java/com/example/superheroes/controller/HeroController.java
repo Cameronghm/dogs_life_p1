@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="http://localhost:3000")
 public class HeroController {
 
     @Autowired
@@ -34,7 +35,8 @@ public class HeroController {
         Hero result = heroService.saveHero(hero);
         if (result == null){
             return HttpStatus.PRECONDITION_FAILED;
-        }else{
+        }
+        else{
             return HttpStatus.CREATED;
         }
     }
