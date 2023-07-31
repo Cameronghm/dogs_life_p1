@@ -4,6 +4,9 @@ import Row  from 'react-bootstrap/Row';
 import Button  from 'react-bootstrap/Button';
 import { useState } from 'react';
 
+import { saveHero } from '../services/hero-service';
+import { useNavigate } from 'react-router-dom';
+
 const HeroForm = () => {
     const [alias, setAlias] = useState('');
     const [name, setName] = useState('');
@@ -26,13 +29,26 @@ const HeroForm = () => {
         setTeamID(event.target.value)
     }
 
+    const navigate = useNavigate();
+
     const handleSubmit =(event)=>{
         event.preventDefault(); 
         let hero = {};
         hero.alias = alias;
         hero.name = name;
-        hero.ability = ability;
-        hero.teamID = teamID;  
+        hero.superpower = ability;
+        hero.teamID = teamID;
+        saveHero(hero)
+        .then(res => {
+           setAbility('');
+           setAlias('');
+           setName('');
+           setTeamID(0);
+           navigate("/")
+           })
+           .catch(err=>{
+            console.log(err);
+           })     
         console.log(hero)   
       }
 
