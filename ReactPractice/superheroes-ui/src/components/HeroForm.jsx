@@ -26,6 +26,16 @@ const HeroForm = () => {
         setTeamID(event.target.value)
     }
 
+    const handleSubmit =(event)=>{
+        event.preventDefault(); 
+        let hero = {};
+        hero.alias = alias;
+        hero.name = name;
+        hero.ability = ability;
+        hero.teamID = teamID;  
+        console.log(hero)   
+      }
+
   return (
     <Row className='heroForm'>
         <Form >
@@ -35,19 +45,20 @@ const HeroForm = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Hero Name: </Form.Label>
-                <Form.Control type="text" placeholder="Hero name" value={name} onChange={handleNameChange} />
+                <Form.Control type="text" placeholder="Hero name" value={name} onChange={handleNameChange}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="ability" value={ability} onChange={handleAbilityChange}>
+            <Form.Group className="mb-3" controlId="ability">
                 <Form.Label>Hero Ability: </Form.Label>
-                <Form.Control type="text" placeholder="Hero ability" value={teamID} onChange={handleTeamChange}/>
+                <Form.Control type="text" placeholder="Hero ability" value={ability} onChange={handleAbilityChange} />
             </Form.Group>
-            <Form.Select aria-label="Team ID">
+            <Form.Select aria-label="Team ID" value={teamID}
+                onChange={handleTeamChange}>
                 <option>Team ID</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </Form.Select>
-            <Button variant="primary" type="submit">Submit</Button>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
         </Form>
     </Row>
   )
