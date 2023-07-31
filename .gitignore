@@ -4,6 +4,7 @@
 *.iml
 *.pyc
 py3/
+node-modules/
 data/
 build/
 dist/
