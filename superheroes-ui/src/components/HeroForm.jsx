@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react';
+import { saveHero } from '../services/hero-service';
+import { useNavigate } from 'react-router-dom';
 
 const HeroForm = () => {
 
@@ -10,6 +12,7 @@ const HeroForm = () => {
     const [name, setName] = useState('');
     const [ability, setAbility] = useState('');
     const [teamID, setTeamID] = useState(0);
+    const navigate = useNavigate();
 
     const handleAliasChange = (event) => {
         setAlias(event.target.value);
@@ -32,10 +35,20 @@ const HeroForm = () => {
         let hero = {};
         hero.alias = alias;
         hero.name = name;
-        hero.ability = ability;
-        hero.teamID = teamID;
-        console.log(hero);
-      }
+        hero.superpower = ability;
+        hero.teamid = teamID;
+        saveHero(hero)
+          .then(res => {
+             setAbility('');
+             setAlias('');
+             setName('');
+             setTeamID(0);
+             navigate("/")
+             })
+           .catch(err=>{
+              console.log(err);
+             })   
+       }
 
     return (
         <Row className='heroForm'>
