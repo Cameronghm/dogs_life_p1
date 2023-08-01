@@ -51,11 +51,11 @@ public class DogService {
     }
 
     public long removeDogid(String id) {
-        return itsDogRepo.deleteDogId(Long.parseLong(id));
+        return itsDogRepo.removeById(Long.parseLong(id));
     }
 
     public long removeDogName(String name) {
-        return itsDogRepo.deleteDogName(name);
+        return itsDogRepo.removeByName(name);
     }
 
     public Dog saveDog(Dog dog) {
