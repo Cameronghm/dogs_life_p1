@@ -43,7 +43,7 @@ public class DogService {
         }
     }
 
-    public long modify(Dog dog) {
+    public int modify(Dog dog) {
         return itsDogRepo.modifyDog(dog.getId(),
                 dog.getName(),
                 dog.getAge(),
@@ -58,8 +58,8 @@ public class DogService {
         return itsDogRepo.deleteDogName(name);
     }
 
-    public long save(Dog dog) {
-        return itsDogRepo.addDog(dog.getName(), dog.getAge(), Long.parseLong(dog.getOwner_id()));
+    public Dog saveDog(Dog dog) {
+        return itsDogRepo.save(dog);
     }
 
     public String getOwnerName(String name) {
