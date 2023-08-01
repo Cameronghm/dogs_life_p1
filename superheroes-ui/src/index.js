@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,23 +16,25 @@ import Robin from "./images/9.jpeg";
 import Nightwing from "./images/10.jpeg";
 
 const images = {
-    Batman,
-    Superman,
-    GreenLantern,
-    TheHuntress,
-    TheFlash,
-    HarleyQuinn,
-    Deadshot,
-    CountVertigo,
-    Robin,
-    Nightwing
+  Batman,
+  Superman,
+  GreenLantern,
+  TheHuntress,
+  TheFlash,
+  HarleyQuinn,
+  Deadshot,
+  CountVertigo,
+  Robin,
+  Nightwing
 }
 export default images;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
