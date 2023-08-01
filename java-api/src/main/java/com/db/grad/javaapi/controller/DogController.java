@@ -49,6 +49,7 @@ public class DogController {
 
   @DeleteMapping("/delete/id/{id}")
   public HttpStatus deleteDogId(@PathVariable String id) {
+    System.out.println(id);
     if(dogService.removeDogid(id)!=0)
     {
       return HttpStatus.ACCEPTED;

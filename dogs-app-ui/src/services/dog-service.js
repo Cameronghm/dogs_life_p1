@@ -8,4 +8,8 @@ export function countAllDogs(){
     return http.get("/dogs/count");
 }
 
+export function removeDog(id) {
+    return http.delete("/delete/id/{id}", toString(id));
+}
+
 
