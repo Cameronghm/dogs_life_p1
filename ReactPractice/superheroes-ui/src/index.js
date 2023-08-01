@@ -14,6 +14,7 @@ import Deadshot from "./images/7.jpeg";
 import CountVertigo from "./images/8.jpeg";
 import Robin from "./images/9.jpeg";
 import Nightwing from "./images/10.jpeg";
+import { BrowserRouter } from 'react-router-dom';
 
 const images = {
       Batman,
@@ -33,7 +34,9 @@ export default images;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
