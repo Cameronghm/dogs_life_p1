@@ -1,15 +1,12 @@
-package com.db.grad.javaapi;
+package com.example.superheroes;
 
-import com.db.grad.javaapi.repository.DogRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaApiApplication {
-
+public class SuperheroesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavaApiApplication.class, args);
+		SpringApplication.run(SuperheroesApplication.class, args);
 	}
-
 }

@@ -1,7 +1,6 @@
 package com.db.grad.javaapi.service;
 import java.util.Random;
 
-import com.db.grad.javaapi.repository.*;
 import com.db.grad.javaapi.model.Dog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,11 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 
-import com.db.grad.javaapi.model.Dog;
 import com.db.grad.javaapi.repository.DogsRepository;
 import com.db.grad.javaapi.repository.DogsRepositoryStub;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,7 +27,7 @@ public class DogsHandlerTest {
     public void add_a_dog_return_number_of_dogs_in_repo_is_one()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -49,7 +45,7 @@ public class DogsHandlerTest {
     @DisplayName("2. Add Several dogs, return number of dogs added")
     public void add_several_dogs_return_number_of_dogs_match_number_added() {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Random randomNumber = new Random();
@@ -74,7 +70,7 @@ public class DogsHandlerTest {
     public void get_dog_by_name_null_no_dogs()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog actualResult = cut.getDogByName("Happy");
@@ -89,7 +85,7 @@ public class DogsHandlerTest {
     public void get_dog_by_name_null_multiple_dogs()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog1 = new Dog();
@@ -110,7 +106,7 @@ public class DogsHandlerTest {
     public void get_dog_by_name_null_single_dog()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog1 = new Dog();
@@ -127,7 +123,7 @@ public class DogsHandlerTest {
     public void get_dog_by_name_null_multiple_dogs_single_name()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog1 = new Dog();
@@ -150,7 +146,7 @@ public class DogsHandlerTest {
     public void get_dog_by_id_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -168,7 +164,7 @@ public class DogsHandlerTest {
     public void get_dog_by_id_not_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -184,7 +180,7 @@ public class DogsHandlerTest {
     public void update_dog_details_not_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -203,7 +199,7 @@ public class DogsHandlerTest {
     public void update_dog_details_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -221,7 +217,7 @@ public class DogsHandlerTest {
     public void remove_dog_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
@@ -237,7 +233,7 @@ public class DogsHandlerTest {
     public void remove_dog_not_exists()
     {
         // Arrange
-        DogHandler cut = new DogHandler(itsDogRepo);
+        DogService cut = new DogService(itsDogRepo);
 
         // Act
         Dog theDog = new Dog();
