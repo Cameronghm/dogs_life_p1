@@ -34,7 +34,7 @@ public class DogController {
   @PostMapping("/dogs/modify")
   public HttpStatus modify(@RequestBody Dog dog)
   {
-    long modification = dogService.modify(dog);
+    int modification = dogService.modify(dog);
     if(modification==0)
     {
       return HttpStatus.PRECONDITION_FAILED;
@@ -72,7 +72,7 @@ public class DogController {
   @PostMapping("/add")
   public HttpStatus save(@RequestBody Dog dog)
   {
-    if(dogService.save(dog)!=0)
+    if(dogService.saveDog(dog)!=null)
     {
       return HttpStatus.ACCEPTED;
     }
