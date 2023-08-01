@@ -16,7 +16,8 @@ const AllHeroes = () => {
     []
   );
   const getAllHeroesFromAPI = () => {
-    getAllHeroes.then(res => {
+    getAllHeroes()
+    .then(res => {
       setHeroes(res.data);
     })
     .catch(err=>{

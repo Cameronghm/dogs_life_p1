@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
+import { saveNewHero } from '../services/hero-service';
 
 const HeroForm = () => {
   const [alias, setAlias] = useState('');
@@ -24,11 +25,20 @@ const HeroForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     let hero = {};
-    hero.alias = alias;
-    hero.name = name;
-    hero.ability = ability;
-    hero.teamID = teamID;
-    console.log(hero);
+    hero["Alias"] = alias;
+    hero["Name"] = name;
+    hero["Superpower"] = ability;
+    hero["Team ID"] = teamID;
+    saveNewHero(hero)
+      .then(res => {
+        setAbility('');
+        setAlias('');
+        setName('');
+        setTeamID(0);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   return (
     <Row className="heroForm">
